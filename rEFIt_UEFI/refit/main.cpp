@@ -747,15 +747,23 @@ void LOADER_ENTRY::FilterKextsToBlock() {
   if (gSettings.KernelAndKextPatches.KextsToBlock.isEmpty()) {
     return;
   }
+  DBG("Filtering KextsToBlock:\n");
+  for (size_t i = 0; i < gSettings.KernelAndKextPatches.KextsToBlock.size(); i++) {
+    const char* status = "allowed";
+    if (!gSettings.KernelAndKextPatches.KextsToBlock[i].MenuItem.BValue) {
+      status = "disabled by user";
+    } else if (!gSettings.KernelAndKextPatches.KextsToBlock[i].ShouldBlock(macOSVersion)) {
+      status = "not allowed";
+    }
 
-//  size_t count = gSettings.KernelAndKextPatches.KextsToBlock.size();
-////  size_t entryCount = KernelAndKextPatches.KextsToBlock.size();
-////  size_t count = (settingsCount < entryCount) ? settingsCount : entryCount;
-//
-//  for (size_t i = 0; i < count; ++i) {
-//    gSettings.KernelAndKextPatches.KextsToBlock[i].MenuItem.BValue =
-//        gSettings.KernelAndKextPatches.KextsToBlock[i].MenuItem.BValue;
-//  }
+    DBG(" - [%02zu]: %s :: [OS: %s | MatchOS: %s] ==> %s\n", i,
+        gSettings.KernelAndKextPatches.KextsToBlock[i].Label.c_str(),
+        macOSVersion.asString().c_str(),
+        gSettings.KernelAndKextPatches.KextsToBlock[i].MatchOS.notEmpty()
+            ? gSettings.KernelAndKextPatches.KextsToBlock[i].MatchOS.c_str()
+            : "All",
+        status);
+  }
 }
 
 //
@@ -1994,6 +2002,7 @@ void LOADER_ENTRY::StartLoader()
 
     FilterKextPatches();
     FilterKernelPatches();
+    FilterKextsToBlock();
     FilterBootPatches();
     if (LoadedImage &&
         !BooterPatch((UINT8 *)LoadedImage->ImageBase, LoadedImage->ImageSize)) {
