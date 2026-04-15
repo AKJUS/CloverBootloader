@@ -1,5 +1,10 @@
+<div align="center">
+<img src="https://github.com/user-attachments/assets/c688cd07-01c2-4fcd-89e0-ade8417d1371"  alt="CloverBootloader Logo" width="256" />
 
-# CloverBootloader 
+# CloverBootloader
+
+</div>
+
 [![CI](https://github.com/CloverHackyColor/CloverBootloader/actions/workflows/main.yml/badge.svg)](https://github.com/CloverHackyColor/CloverBootloader/actions/workflows/main.yml) [![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)](https://github.com/CloverHackyColor/CloverBootloader/blob/master/LICENSE) 
 
 Bootloader for macOS, Windows and Linux in UEFI and in legacy mode
