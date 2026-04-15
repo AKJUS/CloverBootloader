@@ -1,5 +1,6 @@
-<div align="center">
-<img src="https://github.com/user-attachments/assets/c688cd07-01c2-4fcd-89e0-ade8417d1371"  alt="CloverBootloader Logo" width="256" />
+<p align="center">
+<img width="250" height="250" alt="CloverBootloader Logo" src="https://github.com/user-attachments/assets/2b7ae962-9b9e-4944-8235-8b1693043594" />
+</p>
 
 # CloverBootloader
 
